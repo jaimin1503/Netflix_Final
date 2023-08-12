@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>new</title>
+</head>
+<body>
+	<form action="/movies" method="post" class="mb-3" enctype="multipart/form-data">
+		<label for="title">Title:</label>
+		<input type="text" id="title" placeholder="Enter Title" name="movie[title]">
+
+		<!-- <label for="image">Image URL:</label>
+		<input type="text" id="image" placeholder="Enter image url" name="movie[image]"> -->
+		<label for="image">Image:</label>
+		<input type="file" id="image" placeholder="Enter image" name="image" multiple>
+
+		<label for="genre">Genre:</label>
+		<input type="text" id="genre" placeholder="Enter genre" name="movie[genre]">
+
+		<label for="ratings">Ratings:</label>
+		<input type="text" id="ratings" placeholder="Enter ratings" name="movie[ratings]">
+
+		<label for="year">Year:</label>
+		<input type="text" id="year" placeholder="Enter year" name="movie[year]">
+		
+		<button>Add new movie</button>
+	</form>
+</body>
+</html>
+
+<!-- 
+	title: String,
+  image: String,
+  genre: String,
+  ratings: Number,
+  year: Number,
+ -->
