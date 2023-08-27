@@ -47,6 +47,10 @@
 	background-size: cover;
 	position: absolute;
 }
+.poster2 {
+    object-fit:cover;
+    object-position: 10%;
+}
 
 @media screen and (max-width: 750px) {
     .textcss {

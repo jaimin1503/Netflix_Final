@@ -46,7 +46,10 @@
 			<div class="flex">
 			<% for (let movie of movies) { if(movie.genre == "Comedy"){%>
 				<div class="px-8">
-					<a href="/movies/<%= movie._id %>"><img class="w-48 rounded-md" src="<%= movie.image %>" alt=""></a>
+					<% for(let img of movie.image) {%>
+						
+						<a href="/movies/<%= movie._id %>"><img class="w-48 rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
+					<% } %>
 				</div>
 			<% } } %>
 			</div>

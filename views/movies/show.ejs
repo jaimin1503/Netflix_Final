@@ -32,6 +32,9 @@
 		</div>
 	</div>
 	<div class="poster w-screen h-screen flex flex-col align-middle justify-center">
+		<% for(let img of movie.image) {%>			
+			<img class="poster2 w-screen absolute h-screen rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg">
+		<% } %>
 		<div class="info w-1/3">
 			<div>
 				<img src="https://numskull.com/wp-content/uploads/Stranger-Things-600x207-white.png">
