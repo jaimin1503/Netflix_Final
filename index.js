@@ -124,7 +124,7 @@ app.post("/movies", upload.array("image"), async (req, res) => {
   const movie = new Movie(req.body.movie);
   movie.image = req.files.map((f) => ({ url: f.path, filename: f.filename }));
   await movie.save();
-  req.flash("success", "success fully added new movie");
+  req.flash("success", "successfully added new movie");
   res.redirect(`/movies/${movie._id}`);
 });
 // app.post("/movies",upload.array('image'),(req,res) => {

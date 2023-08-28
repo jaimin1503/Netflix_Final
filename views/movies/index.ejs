@@ -8,7 +8,7 @@
 	<title>movies</title>
 </head>
 <body class="bg-black">
-	
+	<%= success %>
 	<main>
 		<div class="navbar flex justify-around bg-black text-gray-300">
 			<div class="leftbar flex w-1/2">
@@ -31,11 +31,12 @@
 	<div class="row1 my-5">
 		<h1 class="text-4xl ml-5 pb-5 font-extrabold font-blue text-white">Horrors</h1>
 		<ul>
-			<div class="flex">
+			<div class="flex px-10">
 			<% for (let movie of movies) { if(movie.genre == "horror"){%>
-				<div class="px-8">
-					<a href="/movies/<%= movie._id %>"><img class="w-48 rounded-md" src="<%= movie.image %>" alt=""></a>
-				</div>
+				<% for(let img of movie.image) {%>
+						
+					<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
+				<% } %>
 			<% } } %>
 			</div>
 		</ul>
@@ -44,11 +45,11 @@
 		<h1 class="text-4xl ml-5 pb-5 font-extrabold font-blue text-white">TV Comedies</h1>
 		<ul>
 			<div class="flex">
-			<% for (let movie of movies) { if(movie.genre == "Comedy"){%>
+			<% for (let movie of movies) { if(movie.genre == "comedy"){%>
 				<div class="px-8">
 					<% for(let img of movie.image) {%>
 						
-						<a href="/movies/<%= movie._id %>"><img class="w-48 rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
+						<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
 					<% } %>
 				</div>
 			<% } } %>
@@ -61,7 +62,10 @@
 			<div class="flex">
 			<% for (let movie of movies) { if(movie.genre == "Thriller"){%>
 				<div class="px-8">
-					<a href="/movies/<%= movie._id %>"><img class="w-48 rounded-md" src="<%= movie.image %>" alt=""></a>
+					<% for(let img of movie.image) {%>
+						
+						<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
+					<% } %>
 				</div>
 			<% } } %>
 			</div>
