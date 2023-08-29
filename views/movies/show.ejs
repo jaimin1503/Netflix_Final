@@ -12,7 +12,8 @@
 	<h1><%= movie.title %></h1>
 	<h2><%= movie.year %></h2>  -->
 
-	<%= success %>
+	<%- include('../partials/flash')%>
+
 	<div class="navbar flex justify-around bg-black text-gray-300">
 		<div class="leftbar flex w-1/2">
 			<ul class="flex py-2 justify-between w-full">
@@ -41,7 +42,7 @@
 			</div>
 		<div class="buttons flex flex-row justify-around mx-auto py-5 w-1/2">
 				<div class="play z-10">
-					<form action="#">
+					<form action="/play">
 						<button class="z-20 text-black bg-white rounded-lg py-2 px-5">Play</button>
 					</form>
 				</div>

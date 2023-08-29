@@ -6,6 +6,8 @@
 	<title>new</title>
 </head>
 <body>
+	<%- include('../partials/flash')%>
+
 	<form action="/movies" method="post" class="mb-3" enctype="multipart/form-data">
 		<label for="title">Title:</label>
 		<input type="text" id="title" placeholder="Enter Title" name="movie[title]">

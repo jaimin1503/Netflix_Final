@@ -38,7 +38,6 @@ db.once("open", () => {
 app.use(express.static("public"));
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
-passport.use(new localStrategy(User.authenticate()));
 
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
@@ -64,6 +63,10 @@ app.use(
     cookie: { secure: true },
   })
 );
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
 
 app.use((req, res, next) => {
   res.locals.success = req.flash("success");
@@ -111,10 +114,20 @@ app.post(
 app.get(
   "/movies",
   catchAsync(async (req, res) => {
+    if (!req. isAuthenticated ()) {
+      
+      res. redirect('/');
+      req.flash("success","Login First")
+    }else{
     const movies = await Movie.find({});
     res.render("movies/index", { movies });
+    }
   })
 );
+
+app.get("/play",(req,res) => {
+  res.render("movies/video");
+})
 
 app.get("/movies/new", (req, res) => {
   res.render("movies/new");
