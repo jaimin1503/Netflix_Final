@@ -9,6 +9,12 @@ const MovieSchema = new Schema({
       filename: String
     }
   ],
+  posterimage: [
+    {
+      url: String,
+      filename: String
+    }
+  ],
   genre: String,
   ratings: Number,
   year: Number,

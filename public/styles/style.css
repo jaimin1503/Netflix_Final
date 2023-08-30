@@ -684,6 +684,13 @@ video {
 .max-w-\[680px\] {
   max-width: 680px;
 }
+.max-w-max {
+  max-width: -moz-max-content;
+  max-width: max-content;
+}
+.max-w-none {
+  max-width: none;
+}
 .cursor-pointer {
   cursor: pointer;
 }
@@ -736,6 +743,12 @@ video {
   --tw-space-y-reverse: 0;
   margin-top: calc(2rem * calc(1 - var(--tw-space-y-reverse)));
   margin-bottom: calc(2rem * var(--tw-space-y-reverse));
+}
+.overflow-auto {
+  overflow: auto;
+}
+.overflow-x-auto {
+  overflow-x: auto;
 }
 .rounded-lg {
   border-radius: 0.5rem;
@@ -797,10 +810,6 @@ video {
 }
 .p-\[35px\] {
   padding: 35px;
-}
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
 }
 .px-4 {
   padding-left: 1rem;
@@ -902,4 +911,9 @@ video {
   .md\:flex-row {
     flex-direction: row;
   }
+}
+
+#player{
+  width: 100vw;
+  height: 100vh;
 }

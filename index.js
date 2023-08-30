@@ -96,7 +96,7 @@ app.post(
         res.redirect("/movies");
       });
     } catch (e) {
-      req.flash("success", e.message);
+      req.flash("error", e.message);
       res.redirect("/register");
     }
   })
@@ -133,17 +133,48 @@ app.get("/movies/new", (req, res) => {
   res.render("movies/new");
 });
 
-app.post("/movies", upload.array("image"), async (req, res) => {
-  const movie = new Movie(req.body.movie);
-  movie.image = req.files.map((f) => ({ url: f.path, filename: f.filename }));
-  await movie.save();
-  req.flash("success", "successfully added new movie");
-  res.redirect(`/movies/${movie._id}`);
+// const cpUpload = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'posterimage', maxCount: 1 }])
+
+// app.post("/movies", cpUpload, async (req, res) => {
+//   const movie = new Movie(req.body.movie);
+//   movie.image = req.files.map((f) => ({ url: f.path, filename: f.filename }));
+//   movie.posterimage = req.files.map((f) => ({ url: f.path, filename: f.filename }));
+//   await movie.save();
+//   req.flash("success", "successfully added new movie");
+//   res.redirect(`/movies/${movie._id}`);
+// });
+const cpUpload = upload.fields([{ name: 'image', maxCount: 1 }, { name: 'posterimage', maxCount: 1 }])
+
+app.post("/movies", cpUpload, async (req, res) => {
+  try {
+    const movie = new Movie(req.body.movie);
+
+    // Get the Cloudinary URLs and filenames for the uploaded images
+    const thumbnailResult = req.files['image'][0];
+    const posterImageResult = req.files['posterimage'][0];
+
+    // Assign the URLs and filenames to the movie's image and posterimage fields
+    movie.image = {
+      url: thumbnailResult.path, // Use thumbnailResult.secure_url if it's a Cloudinary URL
+      filename: thumbnailResult.filename
+    };
+    movie.posterimage = {
+      url: posterImageResult.path, // Use posterImageResult.secure_url if it's a Cloudinary URL
+      filename: posterImageResult.filename
+    };
+
+    // Save the movie to the database
+    await movie.save();
+
+    req.flash("success", "Successfully added a new movie");
+    res.redirect(`/movies/${movie._id}`);
+  } catch (error) {
+    console.error('Error adding new movie:', error);
+    req.flash("error", "Failed to add a new movie");
+    res.redirect("/movies/new");
+  }
 });
-// app.post("/movies",upload.array('image'),(req,res) => {
-//   console.log(req.body, req.files);
-//   res.send("worked");
-// })
+
 
 app.get(
   "/movies/:id",

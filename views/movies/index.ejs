@@ -32,12 +32,14 @@
 	<div class="row1 my-5">
 		<h1 class="text-4xl ml-5 pb-5 font-extrabold font-blue text-white">Horrors</h1>
 		<ul>
-			<div class="flex px-10">
+			<div class="flex overflow-x-auto">
 			<% for (let movie of movies) { if(movie.genre == "horror"){%>
+				<div class="px-8">
 				<% for(let img of movie.image) {%>
 						
-					<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
+					<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md max-w-none" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
 				<% } %>
+			</div>
 			<% } } %>
 			</div>
 		</ul>
@@ -45,7 +47,7 @@
 	<div class="row2 my-5">
 		<h1 class="text-4xl ml-5 pb-5 font-extrabold font-blue text-white">TV Comedies</h1>
 		<ul>
-			<div class="flex">
+			<div class="flex overflow-x-auto">
 			<% for (let movie of movies) { if(movie.genre == "comedy"){%>
 				<div class="px-8">
 					<% for(let img of movie.image) {%>
@@ -60,12 +62,12 @@
 	<div class="row3 my-5">
 		<h1 class="text-4xl ml-5 pb-5 font-extrabold font-blue text-white">Thrillers</h1>
 		<ul>
-			<div class="flex">
+			<div class="flex overflow-x-auto">
 			<% for (let movie of movies) { if(movie.genre == "Thriller"){%>
 				<div class="px-8">
 					<% for(let img of movie.image) {%>
 						
-						<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
+						<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md max-w-max" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
 					<% } %>
 				</div>
 			<% } } %>
@@ -73,6 +75,8 @@
 		</ul>
 	</div>
 </main>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.min.js" integrity="sha384-Rx+T1VzGupg4BHQYs2gCW9It+akI2MM/mndMCy36UVfodzcJcF0GGLxZIzObiEfa" crossorigin="anonymous"></script>
 </body>
 </html>
 
