@@ -18,9 +18,15 @@ const user = require("./models/user");
 const multer = require("multer");
 const { storage } = require("./cloudinary");
 const upload = multer({ storage });
+const mongoSanitize = require("express-mongo-sanitize");
+const hemlmet = require("helmet");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(mongoSanitize());
+app.use(hemlmet({
+  contentSecurityPolicy: false
+}))
 
 mongoose.connect("mongodb://localhost:27017/netflix", {
   useNewUrlParser: true,
@@ -43,6 +49,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 const sessionConfig = {
+  name: "session",
   secret: "thisisasecret",
   resave: false,
   saveUninitialized: true,
