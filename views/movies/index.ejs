@@ -32,7 +32,7 @@
 	<div class="row1 my-5">
 		<h1 class="text-4xl ml-5 pb-5 font-extrabold font-blue text-white">Horrors</h1>
 		<ul>
-			<div class="flex overflow-x-auto">
+			<div class="flex overflow-x-auto noscrollbar">
 			<% for (let movie of movies) { if(movie.genre == "horror"){%>
 				<div class="px-8">
 				<% for(let img of movie.image) {%>
@@ -47,12 +47,12 @@
 	<div class="row2 my-5">
 		<h1 class="text-4xl ml-5 pb-5 font-extrabold font-blue text-white">TV Comedies</h1>
 		<ul>
-			<div class="flex overflow-x-auto">
+			<div class="flex overflow-x-auto noscrollbar">
 			<% for (let movie of movies) { if(movie.genre == "comedy"){%>
 				<div class="px-8">
 					<% for(let img of movie.image) {%>
 						
-						<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
+						<a href="/movies/<%= movie._id %>"><img class="w-48 h-72 object-cover rounded-md max-w-none" src="<%= img.url %>" alt="flksdhgksfhdg"></a>
 					<% } %>
 				</div>
 			<% } } %>
@@ -62,7 +62,7 @@
 	<div class="row3 my-5">
 		<h1 class="text-4xl ml-5 pb-5 font-extrabold font-blue text-white">Thrillers</h1>
 		<ul>
-			<div class="flex overflow-x-auto">
+			<div class="flex overflow-x-auto noscrollbar">
 			<% for (let movie of movies) { if(movie.genre == "Thriller"){%>
 				<div class="px-8">
 					<% for(let img of movie.image) {%>
